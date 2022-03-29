@@ -8,6 +8,11 @@ public class ScriptA : MonoBehaviour
     void Start()
     {
         this.SetActive(false);
+        Debug.Log("");
+        
+        Debug.Log("");
+        Debug.Log("");
+        Debug.Log("");
     }
 
     // Update is called once per frame
