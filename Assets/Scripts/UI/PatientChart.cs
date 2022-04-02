@@ -19,9 +19,9 @@ public class PatientChart : MonoBehaviour
     [BoxGroup("Transitions")]
     [SerializeField] Vector2 visiblePosition = new Vector3(0f, 20f);
     [BoxGroup("Transitions")]
-    [SerializeField] float showDuration = 1f;
+    [SerializeField] float showDuration = 0.5f;
     [BoxGroup("Transitions")]
-    [SerializeField] float hideDuration = 1f;
+    [SerializeField] float hideDuration = 0.5f;
 
     RectTransform rect;
     UIState state;
