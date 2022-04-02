@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class ConsumeZone : MonoBehaviour
 {
+    //get the list from the player
+
     /////// ON COLLISION ///////
     private void OnTriggerEnter(Collider col)
     {
-        Debug.Log("HIT SHIT");
+        //Debug.Log("HIT SHIT");
         /////// IF ITS AN ITEM ///////
         if (col.gameObject.tag == "Items")
         {
             //// PULL DEETS TO PLAYA ////
-            ///
+            //Pill pullme = col.GetComponent<Pill>();
+            //add it to the list
+            //
             /// 
             //// DELETE COLLIDED OBJECT ////
-            col.gameObject.SetActive(false);
+            Destroy(col.gameObject);
         }
 
     }

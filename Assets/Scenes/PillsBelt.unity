@@ -920,6 +920,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f705ca81409f9d54fb8a87c8bb05f02a, type: 2}
   - {fileID: 11400000, guid: 1fc328a65979d4441a4386cb13841408, type: 2}
   - {fileID: 11400000, guid: f0d30dba43edeb24990509afcbed956e, type: 2}
+  range: 0.9
+  spawnRate: 0.8
+  spawnChance: 0
+  maxDelay: 1
+  spawnNumber: 1
 --- !u!4 &1259897867
 Transform:
   m_ObjectHideFlags: 0

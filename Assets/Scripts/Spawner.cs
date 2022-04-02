@@ -10,11 +10,18 @@ public class Spawner : MonoBehaviour
     [SerializeField] List<Shape> shapes = new List<Shape>();
 
     [SerializeField] float range;
+    [SerializeField] float spawnRate;
+    [SerializeField] float spawnChance;
+    [SerializeField] float maxDelay;
 
+    [SerializeField] int spawnNumber = 1;
 
+    
     void SpawnPill(PillSO pso)
     {
-        GameObject pill = Instantiate(pso.shape.prefab, this.transform);
+        
+        GameObject pill = Instantiate(pso.shape.prefab, this.transform.position + new Vector3(Random.Range((float)-range,(float)range), 0, 0),
+        pso.shape.prefab.transform.rotation);
         pill.GetComponent<MeshRenderer>().material = pso.colr.material;
     }
 
@@ -32,11 +39,33 @@ public class Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
+        if (Time.time > spawnNumber * (1/spawnRate))
+        {
+            
+            if(Random.Range(0, 1f)>(1-spawnChance))
+            {
+                SpawnPill(pillsTemplate[Random.Range(0, pillsTemplate.Count)]);
+                
+            }
+            else
+            {
+                //SpawnRandom();
+                StartCoroutine(WaitnSpawn());
+            }
+            spawnNumber++;
+        }
     }    
-    void Start()
+
+    void SpawnRandom()
     {
         PillSO tempSO = CreatePill();
         SpawnPill(tempSO);
+    }
+
+    IEnumerator WaitnSpawn()
+    {
+        yield return new WaitForSeconds(Random.Range(0,(float)maxDelay));
+        SpawnRandom();
     }
 }

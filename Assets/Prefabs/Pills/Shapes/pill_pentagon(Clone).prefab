@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2522151081879815245}
   m_Layer: 0
   m_Name: pill_pentagon(Clone)
-  m_TagString: Untagged
+  m_TagString: Items
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
