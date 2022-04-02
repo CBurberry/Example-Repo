@@ -23,13 +23,7 @@ public class PatientChart : MonoBehaviour
     [BoxGroup("Transitions")]
     [SerializeField] float hideDuration = 0.5f;
 
-    RectTransform rect;
     UIState state;
-
-    private void Awake()
-    {
-        rect = GetComponent<RectTransform>();
-    }
 
     private void Start()
     {
@@ -58,7 +52,7 @@ public class PatientChart : MonoBehaviour
 
         state = UIState.Busy;
         //Entry transition tween
-        yield return rect.DOAnchorPos(visiblePosition, showDuration).WaitForCompletion();
+        yield return transform.DOMove(visiblePosition, showDuration).WaitForCompletion();
         state = UIState.Ready;
     }
 
@@ -73,7 +67,7 @@ public class PatientChart : MonoBehaviour
         state = UIState.Busy;
 
         //Exit transition tween
-        yield return rect.DOAnchorPos(offScreenPosition, hideDuration).WaitForCompletion();
+        yield return transform.DOMove(offScreenPosition, hideDuration).WaitForCompletion();
         gameObject.SetActive(false);
         state = UIState.Ready;
     }
