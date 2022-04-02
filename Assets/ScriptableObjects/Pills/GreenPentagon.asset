@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eec0151a55e6c52439b53f6001f81400, type: 3}
-  m_Name: RedStar
+  m_Name: GreenPentagon
   m_EditorClassIdentifier: 
-  colr: {fileID: 0}
-  shape: {fileID: 0}
+  colr: {fileID: 11400000, guid: b4f8f96662348514b98bf0192882a461, type: 2}
+  shape: {fileID: 11400000, guid: 1fc328a65979d4441a4386cb13841408, type: 2}

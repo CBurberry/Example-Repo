@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour
     [BoxGroup("User Interface")]
     [SerializeField] GridLayoutGroup medicinesList;
 
-    //[BoxGroup("Round Logic")]
-    //[SerializeField] List<>
+    [BoxGroup("Gameplay")]
+    [SerializeField] List<RoundData> Rounds;
 
     // Start is called before the first frame update
     void Start()
