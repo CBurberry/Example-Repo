@@ -24,4 +24,6 @@ public class RoundData : ScriptableObject
 
     [BoxGroup("Spawner")]
     [SerializeField] List<SpawnChances> spawnRates;
+
+    public List<Objective> Objectives => objectives;
 }
