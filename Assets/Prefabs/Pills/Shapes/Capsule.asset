@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Capsule
   m_EditorClassIdentifier: 
   prefab: {fileID: 6907277882504158777, guid: 6969a311721974b48adb767487e08b18, type: 3}
-  shape: Capsule
+  shape: 1

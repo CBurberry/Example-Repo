@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Rounded
   m_EditorClassIdentifier: 
   prefab: {fileID: 5076174461672132969, guid: 3755aa066c3c6d340b1cb8430fc7b623, type: 3}
-  shape: Rounded
+  shape: 2

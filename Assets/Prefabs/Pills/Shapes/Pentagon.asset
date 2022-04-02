@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Pentagon
   m_EditorClassIdentifier: 
   prefab: {fileID: 3517130675145428036, guid: 6ec50cdb7a33988419d4d1e276243057, type: 3}
-  shape: Pentagon
+  shape: 5

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: White
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 43e5a601c6e70564c878fe3012960c6b, type: 2}
-  colour: White
+  colour: 4

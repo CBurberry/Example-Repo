@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cylinder
   m_EditorClassIdentifier: 
   prefab: {fileID: 3819204633843137101, guid: 9c010832e1181b54bb5087b09b7955eb, type: 3}
-  shape: Cylinder
+  shape: 3

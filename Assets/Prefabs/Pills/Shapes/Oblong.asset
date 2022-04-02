@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Oblong
   m_EditorClassIdentifier: 
   prefab: {fileID: 8434217692787632441, guid: 82eed0222ee1937458165a90f8ac7035, type: 3}
-  shape: Oblong
+  shape: 4
