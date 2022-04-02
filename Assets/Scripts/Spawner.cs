@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-
-    void SpawnPill(Colour cl, Shape shape)
+    List<PillSO> pillsTemplate = new List<PillSO>();
+    void SpawnPill(PillSO pso)
     {
-        GameObject pill = Instantiate(shape.prefab);
-        pill.GetComponent<MeshRenderer>().material = cl.material;
+        GameObject pill = Instantiate(pso.shape.prefab);
+        pill.GetComponent<MeshRenderer>().material = pso.colr.material;
     }
 
     // Update is called once per frame
