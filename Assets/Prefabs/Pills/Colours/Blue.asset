@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36cca522476c004a9eb177d302b0db7, type: 3}
   m_Name: Blue
   m_EditorClassIdentifier: 
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: e9f16ff7a379d6b45a7606a95faf921d, type: 2}
   colour: Blue

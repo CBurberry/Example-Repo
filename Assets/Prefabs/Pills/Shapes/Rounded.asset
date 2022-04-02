@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac577b4c4b5e4ed409b962c3f2d2be74, type: 3}
   m_Name: Rounded
   m_EditorClassIdentifier: 
-  prefab: {fileID: 919132149155446097, guid: b17a168f9f2cf364995a100b3575cd7a, type: 3}
+  prefab: {fileID: 5076174461672132969, guid: 3755aa066c3c6d340b1cb8430fc7b623, type: 3}
   shape: Rounded

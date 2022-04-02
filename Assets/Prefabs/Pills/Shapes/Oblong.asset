@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac577b4c4b5e4ed409b962c3f2d2be74, type: 3}
   m_Name: Oblong
   m_EditorClassIdentifier: 
-  prefab: {fileID: 919132149155446097, guid: d08d6638647983e4db3450b335470ad4, type: 3}
+  prefab: {fileID: 8434217692787632441, guid: 82eed0222ee1937458165a90f8ac7035, type: 3}
   shape: Oblong

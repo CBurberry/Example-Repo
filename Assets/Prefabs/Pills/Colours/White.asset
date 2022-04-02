@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36cca522476c004a9eb177d302b0db7, type: 3}
   m_Name: White
   m_EditorClassIdentifier: 
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: 43e5a601c6e70564c878fe3012960c6b, type: 2}
   colour: White

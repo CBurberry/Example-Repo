@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac577b4c4b5e4ed409b962c3f2d2be74, type: 3}
   m_Name: Diamond
   m_EditorClassIdentifier: 
-  prefab: {fileID: 919132149155446097, guid: 1102f460e848dfa4095cd18187ae670e, type: 3}
+  prefab: {fileID: 5936379329109938691, guid: db444fde45038504980c3b4a907cd0b8, type: 3}
   shape: Diamond
