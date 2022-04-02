@@ -4,9 +4,5 @@ using UnityEngine;
 
 public class Pill : MonoBehaviour
 {
-    string colour;
-    string shape;
-    private SideEffect effects;
-
-
+    [SerializeField] PillSO pso;
 }
