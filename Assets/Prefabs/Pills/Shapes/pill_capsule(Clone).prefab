@@ -259,7 +259,7 @@ MonoBehaviour:
   line: {fileID: 0}
   pointA: {x: 0, y: 0, z: 0}
   pointB: {x: 0, y: 0, z: 0}
-  upHeight: 0.1
+  upHeight: 2
   forceMultiplier: 50
 --- !u!120 &1200051246
 LineRenderer:
