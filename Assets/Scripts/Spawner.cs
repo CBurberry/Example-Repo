@@ -25,6 +25,8 @@ public class Spawner : MonoBehaviour
         GameObject pill = Instantiate(pso.shape.prefab, this.transform.position + new Vector3(Random.Range((float)-range,(float)range), 0, 0),
         pso.shape.prefab.transform.rotation);
         pill.GetComponent<MeshRenderer>().material = pso.colr.material;
+        pill.GetComponent<Pill>().pso = pso;
+        Debug.Log(pso);
     }
 
     PillSO CreatePill()

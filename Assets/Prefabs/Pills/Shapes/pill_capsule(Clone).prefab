@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: -8930630983728222038}
   - component: {fileID: 3327582044766456377}
   - component: {fileID: -3435298189444752287}
+  - component: {fileID: 4382905197161522083}
   m_Layer: 0
   m_Name: pill_capsule(Clone)
   m_TagString: Items
@@ -236,3 +237,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537e930722dd26f489add9e17a2abc6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4382905197161522083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6907277882504158777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a14133faec356f43ad979bfa4113607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pso: {fileID: 0}

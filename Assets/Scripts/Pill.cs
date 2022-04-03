@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pill : MonoBehaviour
 {
-    [SerializeField] PillSO pso;
+    [SerializeField] public PillSO pso;
 
     public PillSO GetData() 
     {

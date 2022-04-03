@@ -18,7 +18,7 @@ public class ConsumeZone : MonoBehaviour
         if (col.gameObject.tag == "Items")
         {
             //// PULL DEETS TO PLAYA ////
-            Pill pill = col.GetComponent<Pill>();
+            Pill pill = col.gameObject.GetComponent<Pill>();
             OnConsumed?.Invoke(pill.GetData());
             //add it to the list
             //

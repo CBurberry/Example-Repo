@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 1552112156029356889}
   - component: {fileID: 8718717186872565211}
   - component: {fileID: -8832310232627819522}
+  - component: {fileID: 415486085158345368}
   m_Layer: 0
   m_Name: pill_oblong(Clone)
   m_TagString: Items
@@ -235,3 +236,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537e930722dd26f489add9e17a2abc6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &415486085158345368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434217692787632441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a14133faec356f43ad979bfa4113607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pso: {fileID: 0}

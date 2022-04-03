@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 441849180987495540}
   - component: {fileID: -3773421605510051803}
   - component: {fileID: -3451165380050769797}
+  - component: {fileID: 8667973780195581869}
   m_Layer: 0
   m_Name: pill_diamond(Clone)
   m_TagString: Items
@@ -235,3 +236,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537e930722dd26f489add9e17a2abc6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8667973780195581869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5936379329109938691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a14133faec356f43ad979bfa4113607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pso: {fileID: 0}
