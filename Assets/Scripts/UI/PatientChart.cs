@@ -15,9 +15,9 @@ public class PatientChart : MonoBehaviour
     public bool IsShowing => gameObject.activeSelf;
 
     [BoxGroup("Transitions")]
-    [SerializeField] Vector2 offScreenPosition = new Vector3(0f, -800f);
+    [SerializeField] Vector3 offScreenPosition = new Vector3(0f, -800f);
     [BoxGroup("Transitions")]
-    [SerializeField] Vector2 visiblePosition = new Vector3(0f, 20f);
+    [SerializeField] Vector3 visiblePosition = new Vector3(0f, 20f);
     [BoxGroup("Transitions")]
     [SerializeField] float showDuration = 0.5f;
     [BoxGroup("Transitions")]
