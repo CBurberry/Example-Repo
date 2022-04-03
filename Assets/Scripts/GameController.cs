@@ -149,6 +149,11 @@ public class GameController : MonoBehaviour
     {
         while (!IsRoundComplete()) 
         {
+            if (IsObjectiveAchieved())
+            {
+                break;
+            }
+
             yield return new WaitForSeconds(1f);
         }
 
