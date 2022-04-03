@@ -8,7 +8,7 @@ public class ConsumeZone : MonoBehaviour
     //External event
     public event Action<PillSO> OnConsumed;
 
-    public List<PillSO> contained = new List<PillSO>;
+    public List<PillSO> contained = new List<PillSO>();
 
 
     //get the list from the player
