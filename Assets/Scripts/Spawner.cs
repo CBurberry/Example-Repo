@@ -75,6 +75,8 @@ public class Spawner : MonoBehaviour
             return;
         }
         
+
+
         if (Time.time > spawnNumber * (0.1/spawnRate))
         {
             if(0 == Random.Range(0,8))
@@ -90,8 +92,11 @@ public class Spawner : MonoBehaviour
                     StartCoroutine(WaitnSpawn());
                 }
             }
-            spawnNumber++;
-            
+            //spawnNumber++;
+            //Debug.Log(spawnNumber);
+            spawnNumber = (int)Mathf.Floor(Time.time / (0.1f / spawnRate)) + 1;
+            Debug.Log(spawnNumber);
+
         }
     }    
 
