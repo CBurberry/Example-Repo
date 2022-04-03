@@ -51,7 +51,7 @@ public class DragPing : MonoBehaviour
         line.enabled = false;
     }
 
-        private void FixedUpdate()
+    private void FixedUpdate()
     {
         if(pointA != Vector3.zero && pointB == Vector3.zero && line.enabled == true)
         {
