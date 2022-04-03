@@ -75,7 +75,7 @@ public class PatientChart : MonoBehaviour
         foreach (var objective in data.Objectives) 
         {
             var member = Instantiate(medCounterPrefab, parentTransform);
-            member.Initialize(objective.Count);
+            member.Initialize(objective.Count, objective.Pill.PreviewIcon);
             pills.Add(objective.Pill);
         }
     }

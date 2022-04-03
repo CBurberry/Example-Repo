@@ -9,6 +9,9 @@ public class PillSO : ScriptableObject
     [SerializeField] public Shape shape;
     private SideEffect effects;
     [SerializeField] private Sprite icon;
+
+    public Sprite PreviewIcon => icon; 
+
     public override int GetHashCode()
     {
         return colr.ColorType.GetHashCode() ^ shape.ShapeType.GetHashCode();
