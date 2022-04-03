@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using NaughtyAttributes;
 using DG.Tweening;
 
@@ -9,6 +10,11 @@ public enum UIState
     Ready,
     Busy
 };
+
+public class ChartData
+{
+    public List<Objective> Objectives;
+}
 
 public class PatientChart : MonoBehaviour
 {
@@ -22,6 +28,13 @@ public class PatientChart : MonoBehaviour
     [SerializeField] float showDuration = 0.5f;
     [BoxGroup("Transitions")]
     [SerializeField] float hideDuration = 0.5f;
+
+    [BoxGroup("User Interface")]
+    [SerializeField] GridLayoutGroup objectivesParent;
+    [BoxGroup("User Interface")]
+    [SerializeField] MedicineCounterUI medCounterPrefab;
+
+    private List<MedicineCounterUI> objectivesData;
 
     UIState state;
 
@@ -40,6 +53,27 @@ public class PatientChart : MonoBehaviour
         {
             gameObject.SetActive(true);
             StartCoroutine(Show());
+        }
+    }
+
+    public void SetData(ChartData data)
+    {
+        //Dumb approach of just reinitializing the whole list.
+        //Definitely not efficient but gets the job done
+        objectivesData = new List<MedicineCounterUI>();
+
+        Transform parentTransform = objectivesParent.gameObject.transform;
+        int children = parentTransform.childCount;
+        for (int i = children - 1; i >= 0; i--)
+        {
+            parentTransform.GetChild(i).gameObject.SetActive(false);
+            Destroy(parentTransform.GetChild(i).gameObject);
+        }
+
+        foreach (var objective in data.Objectives) 
+        {
+            var member = Instantiate(medCounterPrefab, parentTransform);
+            member.Initialize(objective.Count);
         }
     }
 

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using Utility.DeveloperConsole;
@@ -10,7 +11,7 @@ using Utility.DeveloperConsole;
 public class GameController : MonoBehaviour
 {
     [BoxGroup("User Interface")]
-    [SerializeField] Canvas patientChartCanvas;
+    [SerializeField] PatientChart patientChart;
     [BoxGroup("User Interface")]
     [SerializeField] GridLayoutGroup medicinesList;
     [BoxGroup("User Interface")]
@@ -85,12 +86,20 @@ public class GameController : MonoBehaviour
     {
         currentRound++;
         activeRound = Rounds[currentRound];
-        roundElapsedTime = 0f;
-        countdownText.text = roundDuration.ToString("F0", CultureInfo.InvariantCulture);
+
+        //Clear gameplay scene of any leftover pills / medication thats no longer relevant.
+        var pills = FindObjectsOfType<Pill>().ToList();
+        pills.ForEach(x => Destroy(x));
+
+        //Reset UI
+        ResetUI();
+        var chartData = new ChartData 
+        {
+            Objectives = activeRound.Objectives
+        };
+        patientChart.SetData(chartData);
 
         /* TODO
-         * - Clear gameplay scene of any leftover pills / medication thats no longer relevant.
-         * - Reset UI with new round data
          * - Configure difficulty data
          * - Initialize spawner with new data (/ StartCoroutine for active round logic here which instructs spawns).
          */
@@ -142,5 +151,18 @@ public class GameController : MonoBehaviour
             }
         }
         return isComplete;
+    }
+
+    private void ResetUI()
+    {
+        //Reset Timer
+        roundElapsedTime = 0f;
+        countdownText.text = roundDuration.ToString("F0", CultureInfo.InvariantCulture);
+
+        // Hide Patient Chart / Objectives
+        if (patientChart.IsShowing) 
+        {
+            patientChart.Toggle();
+        }
     }
 }
