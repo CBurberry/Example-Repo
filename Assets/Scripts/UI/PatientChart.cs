@@ -34,7 +34,7 @@ public class PatientChart : MonoBehaviour
     [BoxGroup("User Interface")]
     [SerializeField] MedicineCounterUI medCounterPrefab;
 
-    private List<MedicineCounterUI> objectivesData;
+    private List<MedicineCounterUI> objectivesUi;
     private List<PillSO> pills;
 
     UIState state;
@@ -61,7 +61,7 @@ public class PatientChart : MonoBehaviour
     {
         //Dumb approach of just reinitializing the whole list.
         //Definitely not efficient but gets the job done
-        objectivesData = new List<MedicineCounterUI>();
+        objectivesUi = new List<MedicineCounterUI>();
         pills = new List<PillSO>();
 
         Transform parentTransform = objectivesParent.gameObject.transform;
@@ -76,6 +76,7 @@ public class PatientChart : MonoBehaviour
         {
             var member = Instantiate(medCounterPrefab, parentTransform);
             member.Initialize(objective.Count, objective.Pill.PreviewIcon);
+            objectivesUi.Add(member);
             pills.Add(objective.Pill);
         }
     }
@@ -87,8 +88,8 @@ public class PatientChart : MonoBehaviour
             return;
         }
 
-        int index = pills.FindIndex(x => x == pill);
-        objectivesData[index].IncrementCount();
+        int index = pills.FindIndex(x => x.colr == pill.colr && x.shape == pill.shape);
+        objectivesUi[index].IncrementCount();
     }
 
     private IEnumerator Show()
