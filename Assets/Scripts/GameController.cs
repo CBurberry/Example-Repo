@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Utility.DeveloperConsole;
@@ -94,6 +95,16 @@ public class GameController : MonoBehaviour
         DestroyAllItems();
 
         currentRound++;
+
+        if (currentRound > Rounds.Count-1) 
+        {
+            Debug.LogWarning("End of defined rounds!");
+#if !UNITY_EDITOR
+            Application.Quit();
+#else
+            EditorApplication.isPlaying = false;
+#endif
+        }
         Debug.Log("Starting round: " + currentRound);
         activeRound = Rounds[currentRound];
         roundDuration = activeRound.RoundDuration;
@@ -115,6 +126,7 @@ public class GameController : MonoBehaviour
          //Initialize spawner with new data
         conveyor.SetSpeed(activeRound.ConveyorSpeed);
         spawner.SetRandomSpawnProperties(activeRound.SpawnProperties);
+        spawner.SetSpawnRate(activeRound.SpawnRate);
         spawner.SetSpawningActive(true);
         StartCoroutine(RoundLogic());
     }

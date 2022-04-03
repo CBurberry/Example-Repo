@@ -59,7 +59,12 @@ public class Spawner : MonoBehaviour
     public void SetSpawningActive(bool value) 
     {
         shouldSpawn = value;
-    } 
+    }
+
+    public void SetSpawnRate(float newRate) 
+    {
+        spawnRate = newRate;
+    }
 
     // Update is called once per frame
     void Update()
