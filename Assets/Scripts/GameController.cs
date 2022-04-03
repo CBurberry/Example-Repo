@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        scoringZone.OnConsumed += OnItemConsumed;
         StartNewRound();
     }
 
@@ -86,6 +87,7 @@ public class GameController : MonoBehaviour
     {
         currentRound++;
         activeRound = Rounds[currentRound];
+        collectedMedication.Clear();
 
         //Clear gameplay scene of any leftover pills / medication thats no longer relevant.
         var pills = FindObjectsOfType<Pill>().ToList();
@@ -164,5 +166,21 @@ public class GameController : MonoBehaviour
         {
             patientChart.Toggle();
         }
+    }
+
+    private void OnItemConsumed(PillSO item) 
+    {
+        //Update inventory
+        if (collectedMedication.ContainsKey(item))
+        {
+            collectedMedication[item]++;
+        }
+        else 
+        {
+            collectedMedication.Add(item, 1);
+        }
+
+        //Update chart counter
+        patientChart.IncrementPillCount(item);
     }
 }

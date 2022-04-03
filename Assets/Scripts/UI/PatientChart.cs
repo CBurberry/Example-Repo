@@ -35,6 +35,7 @@ public class PatientChart : MonoBehaviour
     [SerializeField] MedicineCounterUI medCounterPrefab;
 
     private List<MedicineCounterUI> objectivesData;
+    private List<PillSO> pills;
 
     UIState state;
 
@@ -61,6 +62,7 @@ public class PatientChart : MonoBehaviour
         //Dumb approach of just reinitializing the whole list.
         //Definitely not efficient but gets the job done
         objectivesData = new List<MedicineCounterUI>();
+        pills = new List<PillSO>();
 
         Transform parentTransform = objectivesParent.gameObject.transform;
         int children = parentTransform.childCount;
@@ -74,7 +76,19 @@ public class PatientChart : MonoBehaviour
         {
             var member = Instantiate(medCounterPrefab, parentTransform);
             member.Initialize(objective.Count);
+            pills.Add(objective.Pill);
         }
+    }
+
+    public void IncrementPillCount(PillSO pill) 
+    {
+        if (!pills.Contains(pill)) 
+        {
+            return;
+        }
+
+        int index = pills.FindIndex(x => x == pill);
+        objectivesData[index].IncrementCount();
     }
 
     private IEnumerator Show()

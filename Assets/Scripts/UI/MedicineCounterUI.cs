@@ -18,6 +18,12 @@ public class MedicineCounterUI : MonoBehaviour
         SetSprite(icon);
     }
 
+    public void IncrementCount() 
+    {
+        current++;
+        SetCount(current);
+    }
+
     public void SetCount(int newCount) 
     {
         current = newCount;
