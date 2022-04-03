@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour
     [BoxGroup("Gameplay")] 
     [SerializeField] simpleConveyor conveyor;
 
-
     private int currentRound;
     private RoundData activeRound;
     private float roundElapsedTime;
@@ -92,9 +91,12 @@ public class GameController : MonoBehaviour
 
     public void StartNewRound() 
     {
+        DestroyAllItems();
+
         currentRound++;
         Debug.Log("Starting round: " + currentRound);
         activeRound = Rounds[currentRound];
+        roundDuration = activeRound.RoundDuration;
         collectedMedication.Clear();
 
         //Clear gameplay scene of any leftover pills / medication thats no longer relevant.
@@ -109,12 +111,22 @@ public class GameController : MonoBehaviour
         };
         patientChart.SetData(chartData);
 
-        /* TODO
-         * - Configure difficulty data
-         * - Initialize spawner with new data (/ StartCoroutine for active round logic here which instructs spawns).
-         */
-
+         //Configure difficulty data
+         //Initialize spawner with new data
+        conveyor.SetSpeed(activeRound.ConveyorSpeed);
+        spawner.SetRandomSpawnProperties(activeRound.SpawnProperties);
+        spawner.SetSpawningActive(true);
         StartCoroutine(RoundLogic());
+    }
+
+    private void DestroyAllItems()
+    {
+        //Clear all items
+        var previousItems = GameObject.FindGameObjectsWithTag("Items");
+        foreach (var item in previousItems)
+        {
+            Destroy(item);
+        }
     }
 
     public IEnumerator RoundLogic() 
@@ -129,6 +141,8 @@ public class GameController : MonoBehaviour
 
     public void EndRound() 
     {
+        spawner.SetSpawningActive(false);
+
         if (IsObjectiveAchieved())
         {
             Debug.Log("You're Winner!");

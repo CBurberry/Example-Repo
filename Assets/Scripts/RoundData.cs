@@ -24,4 +24,5 @@ public class RoundData : ScriptableObject
     public List<Objective> Objectives => objectives;
     public RandomSpawnProperties SpawnProperties => spawnProperties;
     public float RoundDuration => roundDuration;
+    public float ConveyorSpeed => conveyorSpeed;
 }

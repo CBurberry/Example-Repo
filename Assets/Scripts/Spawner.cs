@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Values in this class will be used for randomisation
+[System.Serializable]
 public class RandomSpawnProperties
 {
     public List<Colour> colours = new List<Colour>();
