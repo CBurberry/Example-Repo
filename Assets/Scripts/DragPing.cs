@@ -58,7 +58,7 @@ public class DragPing : MonoBehaviour
     private void FixedUpdate()
     {
         //Debug.Log(pointA + pointB);
-        if(pointA != Vector3.zero && pointB == Vector3.zero && line.enabled == true)
+        if(line.enabled == true)
         {
          
         line.SetPosition(0, this.transform.position);
