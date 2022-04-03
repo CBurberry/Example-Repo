@@ -44,9 +44,10 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         
-        if (Time.time > spawnNumber * (1/spawnRate))
+        if (Time.time > spawnNumber * (0.1/spawnRate))
         {
-            
+            if(0 == Random.Range(0,8))
+            { 
             if(Random.Range(0, 1f)>(1-spawnChance))
             {
                 SpawnPill(pillsTemplate[Random.Range(0, pillsTemplate.Count)]);
@@ -57,7 +58,9 @@ public class Spawner : MonoBehaviour
                 //SpawnRandom();
                 StartCoroutine(WaitnSpawn());
             }
+            }
             spawnNumber++;
+            
         }
     }    
 
