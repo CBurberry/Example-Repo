@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colr: {fileID: 11400000, guid: 5b2a6eb4dcd9b8046ad2b8270f424263, type: 2}
   shape: {fileID: 11400000, guid: d76dad26f89d9874fba5538c4e75ffb4, type: 2}
+  icon: {fileID: 21300000, guid: 59f03a0132e68b94f9352b693f690bfa, type: 3}
