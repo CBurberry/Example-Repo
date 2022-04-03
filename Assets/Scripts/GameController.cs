@@ -29,6 +29,9 @@ public class GameController : MonoBehaviour
     [BoxGroup("Gameplay")] 
     [SerializeField] simpleConveyor conveyor;
 
+    [BoxGroup("Misc")]
+    [SerializeField] ToggleTranslation tray;
+
     private int currentRound;
     private RoundData activeRound;
     private float roundElapsedTime;
@@ -106,6 +109,7 @@ public class GameController : MonoBehaviour
 #endif
         }
         Debug.Log("Starting round: " + currentRound);
+        tray.Toggle();
         activeRound = Rounds[currentRound];
         roundDuration = activeRound.RoundDuration;
         collectedMedication.Clear();
@@ -148,6 +152,7 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
+        yield return tray.Hide();
         EndRound();
     }
 
