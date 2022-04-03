@@ -21,4 +21,9 @@ public class simpleConveyor : MonoBehaviour
         rBody.MovePosition(Pos);
 
     }
+
+    public void SetSpeed(float speed) 
+    {
+        this.speed = speed;
+    }
 }

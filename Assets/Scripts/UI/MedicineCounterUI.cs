@@ -24,6 +24,12 @@ public class MedicineCounterUI : MonoBehaviour
         SetCount(current);
     }
 
+    public void DecrementCount()
+    {
+        current--;
+        SetCount(current);
+    }
+
     public void SetCount(int newCount) 
     {
         current = newCount;
