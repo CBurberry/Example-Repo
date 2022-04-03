@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class DragPing : MonoBehaviour
 {
-    LineRenderer line;
+    public LineRenderer line;
+    Rigidbody body;
 
-    Vector3 pointA;
-    Vector3 pointB;
+    public Vector3 pointA;
+    public Vector3 pointB;
 
     private float mZCoord;
     private Vector3 mOffset;
@@ -23,10 +24,13 @@ public class DragPing : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.Log("mousedown");
         mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
         // get the world position offset
         pointA = gameObject.transform.position - GetMouseWorldPos();
+        Debug.Log("mousedowna");
         line.enabled = true;
+        Debug.Log("mousedowrn");
     }
 
     private Vector3 GetMouseWorldPos()
@@ -53,6 +57,7 @@ public class DragPing : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Debug.Log(pointA + pointB);
         if(pointA != Vector3.zero && pointB == Vector3.zero && line.enabled == true)
         {
          
