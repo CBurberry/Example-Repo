@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        currentRound = 0;
+        currentRound = -1;
 
         if (Instance != null)
         {
@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        collectedMedication = new Dictionary<PillSO, int>();
         scoringZone.OnConsumed += OnItemConsumed;
         StartNewRound();
     }
@@ -86,6 +87,7 @@ public class GameController : MonoBehaviour
     public void StartNewRound() 
     {
         currentRound++;
+        Debug.Log("Starting round: " + currentRound);
         activeRound = Rounds[currentRound];
         collectedMedication.Clear();
 
@@ -116,19 +118,37 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        yield break;
+        EndRound();
     }
 
     public void EndRound() 
     {
+        if (IsObjectiveAchieved())
+        {
+            Debug.Log("You're Winner!");
+        }
+        else 
+        {
+            Debug.Log("You Loser!");
+        }
+        Debug.Log("Starting next round...");
+
         activeRound = null;
 
+        StartCoroutine(EndOfRoundLogic());
+    }
+
+    private IEnumerator EndOfRoundLogic() 
+    {
         /* TODO
          * - Update UI with any end of round stats
          * - Show UI
          * - Run any end of round events (e.g dialog events, wait for user input etc.)
          * - Trigger next round (if we're not handling this event via other UI)
          */
+
+        StartNewRound();
+        yield break;
     }
 
     private bool IsRoundComplete() 
