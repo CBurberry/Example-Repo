@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+
     [SerializeField] List<PillSO> pillsTemplate = new List<PillSO>();
 
     [SerializeField] List<Colour> colours = new List<Colour>();
@@ -16,7 +17,8 @@ public class Spawner : MonoBehaviour
 
     [SerializeField] int spawnNumber = 1;
 
-    
+
+
     void SpawnPill(PillSO pso)
     {
         

@@ -16,6 +16,7 @@ public class PlayerStats : MonoBehaviour
 
     public Volume volume;
     Bloom bloom;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,8 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        bloom.intensity.value = Mathf.PingPong(Time.time, lightSensitivity);
+
         bloom.intensity.value = Mathf.PingPong(Time.time, lightSensitivity);
     }
 }
