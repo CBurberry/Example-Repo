@@ -105,7 +105,7 @@ public class PatientChart : MonoBehaviour
 
     private IEnumerator Show()
     {
-        if (state == UIState.Busy) 
+        if (!CanShow() || state == UIState.Busy) 
         {
             yield break;
         }
@@ -130,5 +130,12 @@ public class PatientChart : MonoBehaviour
         yield return transform.DOMove(offScreenPosition, hideDuration).WaitForCompletion();
         gameObject.SetActive(false);
         state = UIState.Ready;
+    }
+
+    //Helper function to prevent the popup of the clipboard
+    // while an item is being dragged in the same area
+    private bool CanShow() 
+    {
+        return !DragPing.IsDragged;
     }
 }
