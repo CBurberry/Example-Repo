@@ -125,10 +125,10 @@ GameObject:
   - component: {fileID: 663931643994730846}
   - component: {fileID: 8302531105525812393}
   - component: {fileID: 2143365227530909503}
-  - component: {fileID: 8846178768001834449}
   - component: {fileID: -8785867257503622308}
   - component: {fileID: 1738693576}
   - component: {fileID: 1738693575}
+  - component: {fileID: 5006640022650329494}
   m_Layer: 0
   m_Name: pill_pentagon(Clone)
   m_TagString: Items
@@ -214,22 +214,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &8846178768001834449
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3517130675145428036}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.01692879
-  m_Height: 0.031558022
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &-8785867257503622308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,3 +353,17 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!64 &5006640022650329494
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3517130675145428036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3048264310047627932, guid: 43c82ad901b9ea2479b808f6a5002da0, type: 3}

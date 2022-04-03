@@ -125,10 +125,10 @@ GameObject:
   - component: {fileID: 3135005555431325849}
   - component: {fileID: 4612141717621904779}
   - component: {fileID: 1552112156029356889}
-  - component: {fileID: 8718717186872565211}
   - component: {fileID: 415486085158345368}
   - component: {fileID: 468368079}
   - component: {fileID: 468368078}
+  - component: {fileID: 8684365301508038396}
   m_Layer: 0
   m_Name: pill_oblong(Clone)
   m_TagString: Items
@@ -214,22 +214,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &8718717186872565211
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8434217692787632441}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.024370614
-  m_Height: 0.02332227
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &415486085158345368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,3 +353,17 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!64 &8684365301508038396
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8434217692787632441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4526676322425710958, guid: d08d6638647983e4db3450b335470ad4, type: 3}
