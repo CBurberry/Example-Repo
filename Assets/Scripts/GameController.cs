@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Utility.DeveloperConsole;
 
 public class GameController : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class GameController : MonoBehaviour
     private int currentRound;
     private RoundData activeRound;
     private float roundElapsedTime;
+
+    //Debug
+    [Header("Debug")]
+    [SerializeField] DeveloperConsoleBehaviour devConsole;
 
     //N.B. We may want to consider this as a difficulty parameter
     [BoxGroup("Gameplay")]
@@ -54,6 +59,21 @@ public class GameController : MonoBehaviour
         {
             roundElapsedTime += Time.deltaTime;
         }
+
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(devConsole.ConsoleToggleKey)) 
+        {
+            devConsole?.Toggle();
+        }
+
+        if (devConsole != null && devConsole.IsOpen) 
+        {
+            if (Input.GetKeyDown(devConsole.ConsoleInputKey)) 
+            {
+                devConsole.ProcessCommand();
+            }
+        }
+#endif
     }
 
     public void StartNewRound() 
