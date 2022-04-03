@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ConsumeZone : MonoBehaviour
 {
+    //External event
+    public event Action<PillSO> OnConsumed;
+
     //get the list from the player
 
     /////// ON COLLISION ///////
@@ -14,7 +18,8 @@ public class ConsumeZone : MonoBehaviour
         if (col.gameObject.tag == "Items")
         {
             //// PULL DEETS TO PLAYA ////
-            //Pill pullme = col.GetComponent<Pill>();
+            Pill pill = col.GetComponent<Pill>();
+            OnConsumed?.Invoke(pill.GetData());
             //add it to the list
             //
             /// 

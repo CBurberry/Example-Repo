@@ -2455,6 +2455,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 71426849}
     - target: {fileID: 4994637790439454336, guid: 6e4a176e15e93154c8c4dae2cab904f0, type: 3}
+      propertyPath: scoringZone
+      value: 
+      objectReference: {fileID: 1969557379}
+    - target: {fileID: 4994637790439454336, guid: 6e4a176e15e93154c8c4dae2cab904f0, type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 469279853}

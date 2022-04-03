@@ -18,6 +18,10 @@ public class GameController : MonoBehaviour
 
     [BoxGroup("Gameplay")]
     [SerializeField] List<RoundData> Rounds;
+    [BoxGroup("Gameplay")]
+    [SerializeField] float roundDuration = 60f;             //N.B. We may want to consider this as a difficulty parameter
+    [BoxGroup("Gameplay")]
+    [SerializeField] ConsumeZone scoringZone;
 
     private int currentRound;
     private RoundData activeRound;
@@ -26,10 +30,6 @@ public class GameController : MonoBehaviour
     //Debug
     [Header("Debug")]
     [SerializeField] DeveloperConsoleBehaviour devConsole;
-
-    //N.B. We may want to consider this as a difficulty parameter
-    [BoxGroup("Gameplay")]
-    [SerializeField] float roundDuration = 60f;
 
     //User Collected Items
     private Dictionary<PillSO, int> collectedMedication;
