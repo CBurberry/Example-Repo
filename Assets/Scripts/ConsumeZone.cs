@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class ConsumeZone : MonoBehaviour
 {
-    //External event
-    public event Action<PillSO> OnConsumed;
+    //External events
+    public event Action<PillSO> OnAdded;
+    public event Action<PillSO> OnDropped;
 
     public List<PillSO> contained = new List<PillSO>();
 
@@ -24,7 +25,7 @@ public class ConsumeZone : MonoBehaviour
             //// PULL DEETS TO PLAYA ////
             Pill pill = col.gameObject.GetComponent<Pill>();
             contained.Add(pill.pso);
-            OnConsumed?.Invoke(pill.GetData());
+            OnAdded?.Invoke(pill.GetData());
 
         }
 
@@ -39,7 +40,7 @@ public class ConsumeZone : MonoBehaviour
             //// PULL DEETS TO PLAYA ////
             Pill pill = col.gameObject.GetComponent<Pill>();
             contained.Remove(pill.pso);
-
+            OnDropped?.Invoke(pill.GetData());
         }
 
     }

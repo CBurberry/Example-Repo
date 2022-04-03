@@ -92,6 +92,17 @@ public class PatientChart : MonoBehaviour
         objectivesUi[index].IncrementCount();
     }
 
+    public void DecrementPillCount(PillSO pill) 
+    {
+        if (!pills.Contains(pill))
+        {
+            return;
+        }
+
+        int index = pills.FindIndex(x => x.colr == pill.colr && x.shape == pill.shape);
+        objectivesUi[index].DecrementCount();
+    }
+
     private IEnumerator Show()
     {
         if (state == UIState.Busy) 

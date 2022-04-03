@@ -60,7 +60,8 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         collectedMedication = new Dictionary<PillSO, int>();
-        scoringZone.OnConsumed += OnItemConsumed;
+        scoringZone.OnAdded += OnItemScored;
+        scoringZone.OnDropped += OnItemDropped;
         StartNewRound();
     }
 
@@ -193,7 +194,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void OnItemConsumed(PillSO item) 
+    private void OnItemScored(PillSO item) 
     {
         //Update inventory
         if (collectedMedication.ContainsKey(item))
@@ -207,5 +208,17 @@ public class GameController : MonoBehaviour
 
         //Update chart counter
         patientChart.IncrementPillCount(item);
+    }
+
+    private void OnItemDropped(PillSO item)
+    {
+        //Update inventory
+        if (collectedMedication.ContainsKey(item))
+        {
+            collectedMedication[item]--;
+        }
+
+        //Update chart counter
+        patientChart.DecrementPillCount(item);
     }
 }
