@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 8434217692787632441}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.8899872, y: 3.8899872, z: 1.4920468}
+  m_LocalScale: {x: 6, y: 6, z: 2.2}
   m_Children:
   - {fileID: 1599310581}
   m_Father: {fileID: 0}
@@ -214,7 +214,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 48
+  m_Constraints: 16
   m_CollisionDetection: 0
 --- !u!136 &8718717186872565211
 CapsuleCollider:
