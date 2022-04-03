@@ -20,9 +20,12 @@ public class RoundData : ScriptableObject
 
     [SerializeField] float roundDuration;
     [SerializeField] float conveyorSpeed;
+    [SerializeField] float spawnRate;
 
     public List<Objective> Objectives => objectives;
     public RandomSpawnProperties SpawnProperties => spawnProperties;
     public float RoundDuration => roundDuration;
     public float ConveyorSpeed => conveyorSpeed;
+    public float SpawnRate => spawnRate;
+
 }
