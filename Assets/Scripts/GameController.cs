@@ -23,6 +23,11 @@ public class GameController : MonoBehaviour
     [SerializeField] float roundDuration = 60f;             //N.B. We may want to consider this as a difficulty parameter
     [BoxGroup("Gameplay")]
     [SerializeField] ConsumeZone scoringZone;
+    [BoxGroup("Gameplay")]
+    [SerializeField] Spawner spawner;
+    [BoxGroup("Gameplay")] 
+    [SerializeField] simpleConveyor conveyor;
+
 
     private int currentRound;
     private RoundData activeRound;

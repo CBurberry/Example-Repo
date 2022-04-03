@@ -10,20 +10,18 @@ public class Objective
     public int Count;
 }
 
-[System.Serializable]
-public class SpawnChances 
-{
-    public PillSO Pill;
-    public float Chance;
-}
-
 [CreateAssetMenu(fileName = nameof(RoundData), menuName = "Gameplay/Create New Rounds Data SO")]
 public class RoundData : ScriptableObject
 {
     [SerializeField] List<Objective> objectives;
 
     [BoxGroup("Spawner")]
-    [SerializeField] List<SpawnChances> spawnRates;
+    [SerializeField] RandomSpawnProperties spawnProperties;
+
+    [SerializeField] float roundDuration;
+    [SerializeField] float conveyorSpeed;
 
     public List<Objective> Objectives => objectives;
+    public RandomSpawnProperties SpawnProperties => spawnProperties;
+    public float RoundDuration => roundDuration;
 }
