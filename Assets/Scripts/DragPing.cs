@@ -16,6 +16,7 @@ public class DragPing : MonoBehaviour
     public float upHeight = 0.1f;
     public float forceMultiplier = 50;
 
+    public static bool IsDragged { get; private set; }
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class DragPing : MonoBehaviour
         // get the world position offset
         pointA = gameObject.transform.position - GetMouseWorldPos();
         Debug.Log("mousedowna");
-        line.enabled = true;
+        IsDragged = line.enabled = true;
         Debug.Log("mousedowrn");
     }
 
@@ -52,7 +53,7 @@ public class DragPing : MonoBehaviour
         Vector3 direction = new Vector3(difference.x, -upHeight, difference.z);
         Debug.Log(direction);
         this.GetComponent<Rigidbody>().AddForce(-direction * forceMultiplier);
-        line.enabled = false;
+        IsDragged = line.enabled = false;
     }
 
     private void FixedUpdate()
@@ -67,5 +68,13 @@ public class DragPing : MonoBehaviour
         }
         //if point A exists && Point B doesnt exist
         //draw line between A + mouse
+    }
+
+    private void OnDestroy()
+    {
+        if (line.enabled) 
+        {
+            IsDragged = line.enabled = false;
+        }
     }
 }
