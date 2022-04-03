@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using Utility.DeveloperConsole;
@@ -12,6 +13,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Canvas patientChartCanvas;
     [BoxGroup("User Interface")]
     [SerializeField] GridLayoutGroup medicinesList;
+    [BoxGroup("User Interface")]
+    [SerializeField] Text countdownText;
 
     [BoxGroup("Gameplay")]
     [SerializeField] List<RoundData> Rounds;
@@ -58,6 +61,8 @@ public class GameController : MonoBehaviour
         if (activeRound != null) 
         {
             roundElapsedTime += Time.deltaTime;
+            float timeRemaining = Mathf.Clamp(roundDuration - roundElapsedTime, 0, roundDuration);
+            countdownText.text = Mathf.FloorToInt(timeRemaining).ToString();
         }
 
 #if UNITY_EDITOR
@@ -81,6 +86,7 @@ public class GameController : MonoBehaviour
         currentRound++;
         activeRound = Rounds[currentRound];
         roundElapsedTime = 0f;
+        countdownText.text = roundDuration.ToString("F0", CultureInfo.InvariantCulture);
 
         /* TODO
          * - Clear gameplay scene of any leftover pills / medication thats no longer relevant.
