@@ -206,7 +206,8 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        yield return tray.Hide();
+        //Disabling as collision triggers are causing issues.
+        //yield return tray.Hide();
         EndRound();
     }
 
@@ -214,6 +215,7 @@ public class GameController : MonoBehaviour
     {
         spawner.SetSpawningActive(false);
         activeRoundEndState = GetRoundEndResult();
+        Debug.Log($"Round end result: {activeRoundEndState}");
         activeRound = null;
         StartCoroutine(EndOfRoundLogic());
     }
@@ -239,6 +241,7 @@ public class GameController : MonoBehaviour
 
         //Start typing diagnosis
         var result = diagnoses.First(x => x.State == activeRoundEndState);
+        Debug.Log($"Result Dialog: '{result.Diagnosis}'");
         yield return patientChart.TypeDiagnosis(result.Diagnosis);
 
         //Show toggles
@@ -387,7 +390,7 @@ public class GameController : MonoBehaviour
         {
             if (inventory.ContainsKey(objective.Pill))
             {
-                isTrue &= inventory[objective.Pill] >= objective.Count;
+                isTrue &= inventory[objective.Pill] > objective.Count;
             }
             else
             {
@@ -402,7 +405,22 @@ public class GameController : MonoBehaviour
     {
         var objectives = activeRound.Objectives;
         var inventory = collectedMedication; //this may need changing to check on explosives or other items
-        return inventory.Any(i => i.Value > 0 && !objectives.Any(o => o.Pill == i.Key));
+        var objectivesPillTypes = objectives.Select(x => x.Pill).ToList();
+
+        foreach (var kvp in inventory) 
+        {
+            var pill = kvp.Key;
+            int count = kvp.Value;
+            if (count > 0) 
+            {
+                if (!objectivesPillTypes.Contains(pill)) 
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     [System.Serializable]
