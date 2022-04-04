@@ -25,6 +25,11 @@ public class ToggleTranslation : MonoBehaviour
 
     TranslationState state;
 
+    private void Start()
+    {
+        state = TranslationState.Ready;
+    }
+
     public void Toggle()
     {
         if (IsShowing)

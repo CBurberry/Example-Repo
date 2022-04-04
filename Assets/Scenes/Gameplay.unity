@@ -2135,8 +2135,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1763357574}
-          m_TargetAssemblyTypeName: PatientChart, Assembly-CSharp
+        - m_Target: {fileID: 1763357575}
+          m_TargetAssemblyTypeName: ToggleTranslation, Assembly-CSharp
           m_MethodName: Toggle
           m_Mode: 1
           m_Arguments:
@@ -2324,17 +2324,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b06300f6da4f5f64daa85aeecf0bc503, type: 3}
+--- !u!1 &1763357573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 134941162711097235, guid: b06300f6da4f5f64daa85aeecf0bc503, type: 3}
+  m_PrefabInstance: {fileID: 1763357572}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1763357574 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1763357574, guid: b06300f6da4f5f64daa85aeecf0bc503, type: 3}
   m_PrefabInstance: {fileID: 1763357572}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1763357573}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8802591827e402b418220bf590b5ea3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1763357575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763357573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83ecaa18116e7446b2f6579dc607455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offScreenPosition: {x: 0.17, y: 5, z: 0}
+  visiblePosition: {x: 0.17, y: 5, z: -1.65}
+  showDuration: 0.5
+  hideDuration: 0.5
 --- !u!4 &1790176766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a3a203da824f1f4419d5c6d4dfa608d2, type: 3}

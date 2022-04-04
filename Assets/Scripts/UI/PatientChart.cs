@@ -5,12 +5,6 @@ using UnityEngine.UI;
 using NaughtyAttributes;
 using DG.Tweening;
 
-public enum UIState 
-{
-    Ready,
-    Busy
-};
-
 public class ChartData
 {
     public List<Objective> Objectives;
@@ -18,17 +12,6 @@ public class ChartData
 
 public class PatientChart : MonoBehaviour
 {
-    public bool IsShowing => gameObject.activeSelf;
-
-    [BoxGroup("Transitions")]
-    [SerializeField] Vector3 offScreenPosition = new Vector3(0f, -800f);
-    [BoxGroup("Transitions")]
-    [SerializeField] Vector3 visiblePosition = new Vector3(0f, 20f);
-    [BoxGroup("Transitions")]
-    [SerializeField] float showDuration = 0.5f;
-    [BoxGroup("Transitions")]
-    [SerializeField] float hideDuration = 0.5f;
-
     [BoxGroup("User Interface")]
     [SerializeField] GridLayoutGroup objectivesParent;
     [BoxGroup("User Interface")]
@@ -36,26 +19,6 @@ public class PatientChart : MonoBehaviour
 
     private List<MedicineCounterUI> objectivesUi;
     private List<PillSO> pills;
-
-    UIState state;
-
-    private void Start()
-    {
-        state = UIState.Ready;
-    }
-
-    public void Toggle() 
-    {
-        if (IsShowing)
-        {
-            StartCoroutine(Hide());
-        }
-        else 
-        {
-            gameObject.SetActive(true);
-            StartCoroutine(Show());
-        }
-    }
 
     public void SetData(ChartData data)
     {
@@ -101,35 +64,6 @@ public class PatientChart : MonoBehaviour
 
         int index = pills.FindIndex(x => x.colr == pill.colr && x.shape == pill.shape);
         objectivesUi[index].DecrementCount();
-    }
-
-    private IEnumerator Show()
-    {
-        if (!CanShow() || state == UIState.Busy) 
-        {
-            yield break;
-        }
-
-        state = UIState.Busy;
-        //Entry transition tween
-        yield return transform.DOMove(visiblePosition, showDuration).WaitForCompletion();
-        state = UIState.Ready;
-    }
-
-
-    private IEnumerator Hide() 
-    {
-        if (state == UIState.Busy)
-        {
-            yield break;
-        }
-
-        state = UIState.Busy;
-
-        //Exit transition tween
-        yield return transform.DOMove(offScreenPosition, hideDuration).WaitForCompletion();
-        gameObject.SetActive(false);
-        state = UIState.Ready;
     }
 
     //Helper function to prevent the popup of the clipboard

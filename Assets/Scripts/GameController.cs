@@ -224,9 +224,10 @@ public class GameController : MonoBehaviour
         countdownText.text = roundDuration.ToString("F0", CultureInfo.InvariantCulture);
 
         // Hide Patient Chart / Objectives
-        if (patientChart.IsShowing) 
+        var chartTranslationComponent = patientChart.GetComponent<ToggleTranslation>();
+        if (chartTranslationComponent.IsShowing) 
         {
-            patientChart.Toggle();
+            chartTranslationComponent.Toggle();
         }
     }
 
