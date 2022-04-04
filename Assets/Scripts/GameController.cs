@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour
 {
     private enum RoundState 
     {
-        PlayerWon,
+        PlayerWon = 0,
         Overdosed,
         MassivelyOverdosed,
         Underdosed,
@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour
 
     [BoxGroup("User Interface")]
     [SerializeField] PatientChart patientChart;
+    [BoxGroup("User Interface")]
+    [SerializeField] GameObject patientChartButton;
     [BoxGroup("User Interface")]
     [SerializeField] GridLayoutGroup medicinesList;
     [BoxGroup("User Interface")]
@@ -210,32 +212,48 @@ public class GameController : MonoBehaviour
 
     public void EndRound() 
     {
-        spawner.SetSpawningActive(false);
-
-        if (IsObjectiveAchieved())
-        {
-            Debug.Log("You're Winner!");
-        }
-        else 
-        {
-            Debug.Log("You Loser!");
-        }
-        Debug.Log("Starting next round...");
-
-        activeRound = null;
-
+        activeRoundEndState = GetRoundEndResult();
         StartCoroutine(EndOfRoundLogic());
     }
 
     private IEnumerator EndOfRoundLogic() 
     {
-        /* TODO
-         * - Update UI with any end of round stats
-         * - Show UI
-         * - Run any end of round events (e.g dialog events, wait for user input etc.)
-         * - Trigger next round (if we're not handling this event via other UI)
-         */
+        //Disable clipboard button 
+        patientChartButton.SetActive(false);
 
+        //Hide clipboard if it's up
+        var chartTranslationComponent = patientChart.GetComponent<ToggleTranslation>();
+        if (chartTranslationComponent.IsShowing)
+        {
+            chartTranslationComponent.Hide();
+        }
+
+        //Show doctors diagnosis field
+        patientChart.SetDiagnosisTitleActive(true);
+
+        //Show clipboard
+        yield return chartTranslationComponent.Show();
+
+        //Start typing diagnosis
+        var result = diagnoses.First(x => x.State == activeRoundEndState);
+        yield return patientChart.TypeDiagnosis(result.Diagnosis);
+
+        //Show toggles
+        if (activeRoundEndState != RoundState.PlayerWon)
+        {
+            retryToggle.isOn = false;
+            retryToggle.gameObject.SetActive(true);
+        }
+        else 
+        {
+            nextRoundToggle.isOn = false;
+            nextRoundToggle.gameObject.SetActive(true);
+        }
+
+        quitToggle.isOn = false;
+        quitToggle.gameObject.SetActive(true);
+
+        activeRound = null;
         yield break;
     }
 
@@ -246,16 +264,26 @@ public class GameController : MonoBehaviour
 
     private RoundState GetRoundEndResult() 
     {
-        /* if player has an explosive on their tray, (Explosion kill)
-         * else if player has more than 3 extra pills of objective types, (massively overdosed)
-         * else if player has 1-3 extra pills of objective types, (overdosed)
-         * else if player has an unexpected type of pill on their tray, (extra meds)
-         * else if player has not achieved the objectives (underdosed)
-         * else player wins
-         */
-
         //TODO - explosive implementation needs a way to tell whether there is actually an explosive on the tray (currently blocked).
-        return RoundState.PlayerWon;
+        var state = RoundState.PlayerWon;
+        if (IsMassivelyOverdosed())
+        {
+            state = RoundState.MassivelyOverdosed;
+        }
+        else if (IsOverdosed()) 
+        {
+            state = RoundState.Overdosed;
+        }
+        else if (IsExtraMeds())
+        {
+            state = RoundState.ExtraMeds;
+        }
+        else if (!IsObjectiveAchieved())
+        {
+            state = RoundState.Underdosed;
+        }
+
+        return state;
     }
 
     private bool IsObjectiveAchieved() 
@@ -283,12 +311,20 @@ public class GameController : MonoBehaviour
         roundElapsedTime = 0f;
         countdownText.text = roundDuration.ToString("F0", CultureInfo.InvariantCulture);
 
+        //Reset Toggles
+        nextRoundToggle.isOn = false;
+        nextRoundToggle.gameObject.SetActive(false);
+        retryToggle.isOn = false;
+        retryToggle.gameObject.SetActive(false);
+
         // Hide Patient Chart / Objectives
         var chartTranslationComponent = patientChart.GetComponent<ToggleTranslation>();
         if (chartTranslationComponent.IsShowing) 
         {
             chartTranslationComponent.Toggle();
         }
+
+        patientChartButton.SetActive(true);
     }
 
     private void OnItemScored(PillSO item) 
@@ -317,6 +353,55 @@ public class GameController : MonoBehaviour
 
         //Update chart counter
         patientChart.DecrementPillCount(item);
+    }
+
+    private bool IsMassivelyOverdosed()
+    {
+        var objectives = activeRound.Objectives;
+        var inventory = collectedMedication; //this may need changing to check on explosives or other items
+
+        bool isTrue = true;
+        foreach (var objective in objectives)
+        {
+            if (inventory.ContainsKey(objective.Pill))
+            {
+                isTrue &= inventory[objective.Pill] >= objective.Count + 3;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return isTrue;
+    }
+
+    private bool IsOverdosed()
+    {
+        var objectives = activeRound.Objectives;
+        var inventory = collectedMedication; //this may need changing to check on explosives or other items
+
+        bool isTrue = true;
+        foreach (var objective in objectives)
+        {
+            if (inventory.ContainsKey(objective.Pill))
+            {
+                isTrue &= inventory[objective.Pill] >= objective.Count;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return isTrue;
+    }
+
+    private bool IsExtraMeds()
+    {
+        var objectives = activeRound.Objectives;
+        var inventory = collectedMedication; //this may need changing to check on explosives or other items
+        return inventory.Any(i => i.Value > 0 && !objectives.Any(o => o.Pill == i.Key));
     }
 
     [System.Serializable]
