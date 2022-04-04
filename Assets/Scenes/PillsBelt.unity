@@ -964,6 +964,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7196ec084999a841abf9a721c0aa943, type: 3}
   m_PrefabInstance: {fileID: 1119954761}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1446809443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4986397472104770965, guid: dbc0dcf397977834382f7cc88116dd73, type: 3}
+  m_PrefabInstance: {fileID: 5771537506729139383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1446809445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446809443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224d5d5fc97dc7e41a8f6e7925ee4555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exp: {fileID: 7354102503575948042, guid: b571f03d4a47c4441aaffcf8651d6a76, type: 3}
+  force: 1
+  radius: 1
+  countdown: 3.5
 --- !u!1001 &1625445533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1330,6 +1351,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 7880522593236835798, guid: dbc0dcf397977834382f7cc88116dd73, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8507300816110243095, guid: dbc0dcf397977834382f7cc88116dd73, type: 3}
       propertyPath: m_Name
       value: dynamite
@@ -1391,6 +1416,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion
       objectReference: {fileID: 0}
+    - target: {fileID: 7354102503575948042, guid: b571f03d4a47c4441aaffcf8651d6a76, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7354102503575948055, guid: b571f03d4a47c4441aaffcf8651d6a76, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1447,6 +1476,10 @@ PrefabInstance:
     - target: {fileID: 433650580329666403, guid: 34c77e458c149924f9ba28425bda5f6e, type: 3}
       propertyPath: m_Name
       value: Smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 433650580329666403, guid: 34c77e458c149924f9ba28425bda5f6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1569427974310093341, guid: 34c77e458c149924f9ba28425bda5f6e, type: 3}
       propertyPath: m_RootOrder
