@@ -36,25 +36,14 @@ public class PatientChart : MonoBehaviour
 
     public IEnumerator ShowDiagnosis(string diagnosis) 
     {
-        SetDiagnosisTitleActive(true);
         diagnosisBodyText.text = string.Empty;
-        SetDiagnosisBodyActive(true);
+        SetDiagnosisActive(true);
         yield return TypeDiagnosis(diagnosis);
     }
 
-    public void HideDiagnosis() 
-    {
-        SetDiagnosisTitleActive(false);
-        SetDiagnosisBodyActive(false);
-    }
-
-    public void SetDiagnosisTitleActive(bool value)
+    public void SetDiagnosisActive(bool value)
     {
         diagnosisTitleText.gameObject.SetActive(value);
-    }
-
-    public void SetDiagnosisBodyActive(bool value)
-    {
         diagnosisBodyText.gameObject.SetActive(value);
     }
 

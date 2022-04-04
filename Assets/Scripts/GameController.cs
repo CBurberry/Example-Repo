@@ -261,14 +261,13 @@ public class GameController : MonoBehaviour
         //Show clipboard
         patientChart.gameObject.SetActive(true);
         //Show doctors diagnosis field
-        patientChart.SetDiagnosisTitleActive(true);
         yield return chartTranslationComponent.Show();
         waitingForUserSelection = true;
 
         //Start typing diagnosis
         var result = diagnoses.First(x => x.State == activeRoundEndState);
         Debug.Log($"Result Dialog: '{result.Diagnosis}'");
-        patientChart.SetDiagnosisBodyActive(true);
+        patientChart.SetDiagnosisActive(true);
         yield return patientChart.TypeDiagnosis(result.Diagnosis);
 
         //Show toggles
@@ -346,8 +345,7 @@ public class GameController : MonoBehaviour
         countdownText.text = roundDuration.ToString("F0", CultureInfo.InvariantCulture);
 
         //Reset diagnosis
-        patientChart.SetDiagnosisTitleActive(false);
-        patientChart.SetDiagnosisBodyActive(false);
+        patientChart.SetDiagnosisActive(false);
 
         //Reset Toggles
         nextRoundToggle.isOn = false;
