@@ -16,11 +16,61 @@ public class PatientChart : MonoBehaviour
     [SerializeField] GridLayoutGroup objectivesParent;
     [BoxGroup("User Interface")]
     [SerializeField] MedicineCounterUI medCounterPrefab;
+    [BoxGroup("User Interface")]
+    [SerializeField] Text diagnosisTitleText;
+    [BoxGroup("User Interface")]
+    [SerializeField] Text diagnosisBodyText;
 
     private List<MedicineCounterUI> objectivesUi;
     private List<PillSO> pills;
+    private bool isTyping;
+    private const float lettersPerSecond = 30f;
 
-    public void SetData(ChartData data)
+    public bool IsTyping => isTyping;
+
+    private void Start()
+    {
+        diagnosisTitleText.gameObject.SetActive(false);
+        diagnosisBodyText.gameObject.SetActive(false);
+    }
+
+    public IEnumerator ShowDiagnosis(string diagnosis) 
+    {
+        SetDiagnosisTitleActive(true);
+        diagnosisBodyText.text = string.Empty;
+        SetDiagnosisBodyActive(true);
+        yield return TypeDiagnosis(diagnosis);
+    }
+
+    public void HideDiagnosis() 
+    {
+        SetDiagnosisTitleActive(false);
+        SetDiagnosisBodyActive(false);
+    }
+
+    public void SetDiagnosisTitleActive(bool value)
+    {
+        diagnosisTitleText.gameObject.SetActive(value);
+    }
+
+    public void SetDiagnosisBodyActive(bool value)
+    {
+        diagnosisBodyText.gameObject.SetActive(value);
+    }
+
+    public IEnumerator TypeDiagnosis(string diagnosis) 
+    {
+        isTyping = true;
+        diagnosisBodyText.text = "";
+        foreach (char c in diagnosis.ToCharArray())
+        {
+            diagnosisBodyText.text += c;
+            yield return new WaitForSeconds(1f / lettersPerSecond);
+        }
+        isTyping = false;
+    }
+
+    public void SetObjectiveData(ChartData data)
     {
         //Dumb approach of just reinitializing the whole list.
         //Definitely not efficient but gets the job done

@@ -11,12 +11,26 @@ using Utility.DeveloperConsole;
 
 public class GameController : MonoBehaviour
 {
+    private enum RoundState 
+    {
+        PlayerWon,
+        Overdosed,
+        MassivelyOverdosed,
+        Underdosed,
+        ExtraMeds,
+        ExplosiveSwallowed
+    };
+
     [BoxGroup("User Interface")]
     [SerializeField] PatientChart patientChart;
     [BoxGroup("User Interface")]
     [SerializeField] GridLayoutGroup medicinesList;
     [BoxGroup("User Interface")]
     [SerializeField] Text countdownText;
+
+    //End of round dialog
+    [BoxGroup("User Interface")]
+    [SerializeField] List<RoundStateDialog> diagnoses;
 
     [BoxGroup("Gameplay")]
     [SerializeField] List<RoundData> Rounds;
@@ -124,7 +138,7 @@ public class GameController : MonoBehaviour
         {
             Objectives = activeRound.Objectives
         };
-        patientChart.SetData(chartData);
+        patientChart.SetObjectiveData(chartData);
 
          //Configure difficulty data
          //Initialize spawner with new data
@@ -257,5 +271,12 @@ public class GameController : MonoBehaviour
 
         //Update chart counter
         patientChart.DecrementPillCount(item);
+    }
+
+    [System.Serializable]
+    private class RoundStateDialog 
+    {
+        public RoundState State;
+        public string Diagnosis;
     }
 }
