@@ -2231,7 +2231,7 @@ PrefabInstance:
     - target: {fileID: 4994637790439454336, guid: 6e4a176e15e93154c8c4dae2cab904f0, type: 3}
       propertyPath: scoringZone
       value: 
-      objectReference: {fileID: 1916404220}
+      objectReference: {fileID: 1755729078}
     - target: {fileID: 4994637790439454336, guid: 6e4a176e15e93154c8c4dae2cab904f0, type: 3}
       propertyPath: patientChart
       value: 
@@ -2663,6 +2663,19 @@ MonoBehaviour:
   visiblePosition: {x: -2.25, y: 0.45, z: -1.65}
   showDuration: 0.75
   hideDuration: 0.5
+--- !u!114 &1755729078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755729073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64adcb3aeb5ccc94caa0ad51f2cee9a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contained: []
 --- !u!1001 &1759017219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2973,7 +2986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1916404220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3008,7 +3021,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916404219}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3058,7 +3071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916404219}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.0074803364, y: -0.00708662, z: 0.03617914}
+  m_LocalPosition: {x: 0.0074803364, y: -0.00708662, z: 0.029}
   m_LocalScale: {x: 0.07480315, y: 0.09416483, z: 0.09842518}
   m_Children: []
   m_Father: {fileID: 2096017427}
@@ -3586,6 +3599,14 @@ PrefabInstance:
     - target: {fileID: 2439200767783872107, guid: b42518babce36934b92a595f8c7b4558, type: 3}
       propertyPath: m_Name
       value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439200767783872107, guid: b42518babce36934b92a595f8c7b4558, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2439200767783872107, guid: b42518babce36934b92a595f8c7b4558, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 2461951130424068346, guid: b42518babce36934b92a595f8c7b4558, type: 3}
       propertyPath: m_Materials.Array.data[0]

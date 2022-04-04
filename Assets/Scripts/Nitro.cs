@@ -18,7 +18,7 @@ public class Nitro : MonoBehaviour
         Debug.Log("hit");
         Debug.Log(col.gameObject.tag);
         Debug.Log(col.gameObject);
-        if (col.gameObject.tag == "Items")
+        if (col.gameObject.tag == "Items" || col.gameObject.tag == "Floor")
         {
             Debug.Log("EXPLODE");
             Triggered();
