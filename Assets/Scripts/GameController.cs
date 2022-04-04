@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
         collectedMedication = new Dictionary<PillSO, int>();
         scoringZone.OnAdded += OnItemScored;
         scoringZone.OnDropped += OnItemDropped;
-        StartNewRound();
+        StartRound();
     }
 
     private void Update()
@@ -107,21 +107,47 @@ public class GameController : MonoBehaviour
 #endif
     }
 
-    public void StartNewRound() 
+    public void StartNextRound() 
     {
         DestroyAllItems();
-
         currentRound++;
 
-        if (currentRound > Rounds.Count-1) 
+        if (currentRound > Rounds.Count - 1)
         {
             Debug.LogWarning("End of defined rounds!");
+            QuitGame();
+        }
+
+        StartRound();
+    }
+
+    public void RestartRound() 
+    {
+        DestroyAllItems();
+        StartRound();
+    }
+
+    public void QuitGame() 
+    {
+        StartCoroutine(QuitGameAsync());
+    }
+
+    private IEnumerator QuitGameAsync(float delay = 0.5f) 
+    {
+        if (delay > 0f) 
+        {
+            yield return new WaitForSeconds(delay);
+        }
+
 #if !UNITY_EDITOR
             Application.Quit();
 #else
-            EditorApplication.isPlaying = false;
+        EditorApplication.isPlaying = false;
 #endif
-        }
+    }
+
+    private void StartRound()
+    {
         Debug.Log("Starting round: " + currentRound);
         tray.Toggle();
         activeRound = Rounds[currentRound];
@@ -134,14 +160,14 @@ public class GameController : MonoBehaviour
 
         //Reset UI
         ResetUI();
-        var chartData = new ChartData 
+        var chartData = new ChartData
         {
             Objectives = activeRound.Objectives
         };
         patientChart.SetObjectiveData(chartData);
 
-         //Configure difficulty data
-         //Initialize spawner with new data
+        //Configure difficulty data
+        //Initialize spawner with new data
         conveyor.SetSpeed(activeRound.ConveyorSpeed);
         spawner.SetRandomSpawnProperties(activeRound.SpawnProperties);
         spawner.SetSpawnRate(activeRound.SpawnRate);
@@ -203,7 +229,6 @@ public class GameController : MonoBehaviour
          * - Trigger next round (if we're not handling this event via other UI)
          */
 
-        StartNewRound();
         yield break;
     }
 
