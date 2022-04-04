@@ -88,7 +88,7 @@ public class GameController : MonoBehaviour
         collectedMedication = new Dictionary<PillSO, int>();
         scoringZone.OnAdded += OnItemScored;
         scoringZone.OnDropped += OnItemDropped;
-        StartRound();
+        StartNextRound();
     }
 
     private void Update()
