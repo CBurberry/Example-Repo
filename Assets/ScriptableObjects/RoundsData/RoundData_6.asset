@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ca496388f331b14cad590076e162c66, type: 3}
-  m_Name: RoundData_2
+  m_Name: RoundData_6
   m_EditorClassIdentifier: 
   objectives:
-  - Pill: {fileID: 11400000, guid: bf052945aef7a6a44b9e1cb293d9f16c, type: 2}
-    Count: 3
+  - Pill: {fileID: 11400000, guid: 5834be81c785a3b4c84d8e4eaf884734, type: 2}
+    Count: 5
+  - Pill: {fileID: 11400000, guid: 3d3c089e6b3234241bd9b51c828a269e, type: 2}
+    Count: 5
   - Pill: {fileID: 11400000, guid: d7dd941c2c7851348928b37b1257f13a, type: 2}
-    Count: 3
-  - Pill: {fileID: 11400000, guid: 1a4c8da068acb8342bbf0b186d5bdd0d, type: 2}
-    Count: 1
+    Count: 5
   spawnProperties:
     colours:
+    - {fileID: 11400000, guid: e908b8e196d99a4488a0c8166be364fb, type: 2}
     - {fileID: 11400000, guid: 0ed8f2ee1ce613340afe16c2287644a2, type: 2}
-    - {fileID: 11400000, guid: b4f8f96662348514b98bf0192882a461, type: 2}
     - {fileID: 11400000, guid: 5b2a6eb4dcd9b8046ad2b8270f424263, type: 2}
     shapes:
     - {fileID: 11400000, guid: f0d30dba43edeb24990509afcbed956e, type: 2}
     - {fileID: 11400000, guid: 1fc328a65979d4441a4386cb13841408, type: 2}
     - {fileID: 11400000, guid: d76dad26f89d9874fba5538c4e75ffb4, type: 2}
-  roundDuration: 70
-  conveyorSpeed: 0.85
-  spawnRate: 0.65
+  roundDuration: 110
+  conveyorSpeed: 1.2
+  spawnRate: 0.85
