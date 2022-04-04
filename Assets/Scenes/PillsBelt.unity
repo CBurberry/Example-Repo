@@ -1324,6 +1324,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 525687886191118468, guid: dbc0dcf397977834382f7cc88116dd73, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f9daa9bf40b41c04eb08ecf336fab27a, type: 2}
     - target: {fileID: 8507300816110243095, guid: dbc0dcf397977834382f7cc88116dd73, type: 3}
       propertyPath: m_Name
       value: dynamite
