@@ -30,6 +30,8 @@ public class GameController : MonoBehaviour
     [BoxGroup("User Interface")]
     [SerializeField] Text countdownText;
     [BoxGroup("User Interface")]
+    [SerializeField] Text roundCounter;
+    [BoxGroup("User Interface")]
     [SerializeField] Toggle nextRoundToggle;
     [BoxGroup("User Interface")]
     [SerializeField] Toggle retryToggle;
@@ -122,6 +124,7 @@ public class GameController : MonoBehaviour
     {
         DestroyAllItems();
         currentRound++;
+        roundCounter.text = "Round: " + (currentRound+1);
 
         if (currentRound > Rounds.Count - 1)
         {

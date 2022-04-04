@@ -33,6 +33,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f0d30dba43edeb24990509afcbed956e, type: 2}
     - {fileID: 11400000, guid: 1fc328a65979d4441a4386cb13841408, type: 2}
     - {fileID: 11400000, guid: d76dad26f89d9874fba5538c4e75ffb4, type: 2}
-  roundDuration: 120
-  conveyorSpeed: 1.3
-  spawnRate: 0.9
+  roundDuration: 150
+  conveyorSpeed: 1.25
+  spawnRate: 1.5
