@@ -17,7 +17,7 @@ public class RandomSpawnProperties
 
 public class Spawner : MonoBehaviour
 {
-
+    [SerializeField] List<GameObject> explosives = new List<GameObject>();
     [SerializeField] List<PillSO> pillsTemplate = new List<PillSO>();
 
     [SerializeField] List<Colour> colours = new List<Colour>();
@@ -26,6 +26,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] float range;
     [SerializeField] float spawnRate;
     [SerializeField] float spawnChance;
+    [SerializeField] float expSpawnChance;
     [SerializeField] float maxDelay;
 
     [SerializeField] int spawnNumber = 1;
@@ -81,7 +82,7 @@ public class Spawner : MonoBehaviour
         {
             if(0 == Random.Range(0,8))
             { 
-                if(Random.Range(0, 1f)>(1-spawnChance))
+                if(Random.Range(0, 1f)>(1 - spawnChance))
                 {
                     SpawnPill(pillsTemplate[Random.Range(0, pillsTemplate.Count)]);
                 
@@ -90,6 +91,14 @@ public class Spawner : MonoBehaviour
                 {
                     //SpawnRandom();
                     StartCoroutine(WaitnSpawn());
+                }
+            }
+            if (Time.time > spawnNumber * (0.1 / spawnRate))
+            {
+                if (Random.Range(0, 1f) > (1 - expSpawnChance))
+                {
+                    Instantiate(explosives[Random.Range(0, explosives.Count)], this.transform.position + new Vector3(Random.Range((float)-range, (float)range), 0, 0),
+                    Quaternion.identity);
                 }
             }
             //spawnNumber++;

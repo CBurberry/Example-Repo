@@ -236,7 +236,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 43e5a601c6e70564c878fe3012960c6b, type: 2}
+  - {fileID: 2100000, guid: e970a1ec75e69c8488b7f609a5717fd0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -337,9 +337,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exp: {fileID: 7354102503575948042, guid: b571f03d4a47c4441aaffcf8651d6a76, type: 3}
-  force: 1
-  radius: 1
-  countdown: 3.5
+  force: 85
+  radius: 7
+  countdown: 3.4
 --- !u!1 &8507300816110243095
 GameObject:
   m_ObjectHideFlags: 0
