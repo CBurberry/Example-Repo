@@ -27,6 +27,12 @@ public class GameController : MonoBehaviour
     [SerializeField] GridLayoutGroup medicinesList;
     [BoxGroup("User Interface")]
     [SerializeField] Text countdownText;
+    [BoxGroup("User Interface")]
+    [SerializeField] Toggle nextRoundToggle;
+    [BoxGroup("User Interface")]
+    [SerializeField] Toggle retryToggle;
+    [BoxGroup("User Interface")]
+    [SerializeField] Toggle quitToggle;
 
     //End of round dialog
     [BoxGroup("User Interface")]
@@ -49,6 +55,7 @@ public class GameController : MonoBehaviour
     private int currentRound;
     private RoundData activeRound;
     private float roundElapsedTime;
+    private RoundState activeRoundEndState;
 
     //Debug
     [Header("Debug")]
@@ -235,6 +242,20 @@ public class GameController : MonoBehaviour
     private bool IsRoundComplete() 
     {
         return roundElapsedTime >= roundDuration;
+    }
+
+    private RoundState GetRoundEndResult() 
+    {
+        /* if player has an explosive on their tray, (Explosion kill)
+         * else if player has more than 3 extra pills of objective types, (massively overdosed)
+         * else if player has 1-3 extra pills of objective types, (overdosed)
+         * else if player has an unexpected type of pill on their tray, (extra meds)
+         * else if player has not achieved the objectives (underdosed)
+         * else player wins
+         */
+
+        //TODO - explosive implementation needs a way to tell whether there is actually an explosive on the tray (currently blocked).
+        return RoundState.PlayerWon;
     }
 
     private bool IsObjectiveAchieved() 
