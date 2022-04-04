@@ -791,6 +791,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3260766539423988781, guid: 0405683f7fa081b41a0311da5b0211a0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3260766539423988781, guid: 0405683f7fa081b41a0311da5b0211a0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3260766539708803808, guid: 0405683f7fa081b41a0311da5b0211a0, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1409,7 +1417,7 @@ PrefabInstance:
     - target: {fileID: 4994637790439454336, guid: 6e4a176e15e93154c8c4dae2cab904f0, type: 3}
       propertyPath: diagnoses.Array.data[2].Diagnosis
       value: Patient ate out our pharmacy today and died. We'll need to dial back
-        on the flavourings to make them less appetising in the future.
+        on the flavorings to make them less appetizing in the future.
       objectReference: {fileID: 0}
     - target: {fileID: 4994637790439454336, guid: 6e4a176e15e93154c8c4dae2cab904f0, type: 3}
       propertyPath: diagnoses.Array.data[3].Diagnosis
