@@ -2729,8 +2729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d83ecaa18116e7446b2f6579dc607455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offScreenPosition: {x: 0.17, y: 5, z: 0}
-  visiblePosition: {x: 0.17, y: 5, z: -1.65}
+  offScreenPosition: {x: 0.17, y: 4.9, z: 0}
+  visiblePosition: {x: 0.17, y: 4.9, z: -1.68}
   showDuration: 0.5
   hideDuration: 0.5
 --- !u!4 &1790176766 stripped

@@ -212,7 +212,9 @@ public class GameController : MonoBehaviour
 
     public void EndRound() 
     {
+        spawner.SetSpawningActive(false);
         activeRoundEndState = GetRoundEndResult();
+        activeRound = null;
         StartCoroutine(EndOfRoundLogic());
     }
 
@@ -232,6 +234,7 @@ public class GameController : MonoBehaviour
         patientChart.SetDiagnosisTitleActive(true);
 
         //Show clipboard
+        patientChart.gameObject.SetActive(true);
         yield return chartTranslationComponent.Show();
 
         //Start typing diagnosis
@@ -252,8 +255,6 @@ public class GameController : MonoBehaviour
 
         quitToggle.isOn = false;
         quitToggle.gameObject.SetActive(true);
-
-        activeRound = null;
         yield break;
     }
 
