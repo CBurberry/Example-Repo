@@ -37,7 +37,7 @@ public class Spawner : MonoBehaviour
     {
         
         GameObject pill = Instantiate(pso.shape.prefab, this.transform.position + new Vector3(Random.Range((float)-range,(float)range), 0, 0),
-        pso.shape.prefab.transform.rotation);
+        Quaternion.Euler(new Vector3(Random.Range(0, 360), Random.Range(0, 360), 0))); //pso.shape.prefab.transform.rotation <- previously
         pill.GetComponent<MeshRenderer>().material = pso.colr.material;
         pill.GetComponent<Pill>().pso = pso;
         Debug.Log(pso);
@@ -98,7 +98,7 @@ public class Spawner : MonoBehaviour
                 if (Random.Range(0, 1f) > (1 - expSpawnChance))
                 {
                     Instantiate(explosives[Random.Range(0, explosives.Count)], this.transform.position + new Vector3(Random.Range((float)-range, (float)range), 0, 0),
-                    Quaternion.identity);
+                    Quaternion.Euler(new Vector3(90, Random.Range(0, 360), 0)));    //quaternion identity pulls the OG rotation
                 }
             }
             //spawnNumber++;
