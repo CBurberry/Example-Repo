@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Dynamite : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Dynamite : MonoBehaviour
 
     public float force;
     public float radius;
+
+    public TextMeshPro textMesh;
 
     public float countdown;
     float timer = 3;
@@ -57,4 +60,6 @@ public class Dynamite : MonoBehaviour
             }
         }
     }
+
+
 }
