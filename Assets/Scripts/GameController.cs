@@ -141,6 +141,26 @@ public class GameController : MonoBehaviour
         StartCoroutine(QuitGameAsync());
     }
 
+    public void Toggle_StartNextRound()
+    {
+        if (!nextRoundToggle.isOn) 
+        {
+            return;
+        }
+
+        StartNextRound();
+    }
+
+    public void Toggle_RestartRound()
+    {
+        if (!retryToggle.isOn) 
+        {
+            return;
+        }
+
+        RestartRound();
+    }
+
     private IEnumerator QuitGameAsync(float delay = 0.5f) 
     {
         if (delay > 0f) 
@@ -215,6 +235,7 @@ public class GameController : MonoBehaviour
     {
         spawner.SetSpawningActive(false);
         activeRoundEndState = GetRoundEndResult();
+        LogInventoryContent();
         Debug.Log($"Round end result: {activeRoundEndState}");
         activeRound = null;
         StartCoroutine(EndOfRoundLogic());
@@ -242,6 +263,7 @@ public class GameController : MonoBehaviour
         //Start typing diagnosis
         var result = diagnoses.First(x => x.State == activeRoundEndState);
         Debug.Log($"Result Dialog: '{result.Diagnosis}'");
+        patientChart.SetDiagnosisBodyActive(true);
         yield return patientChart.TypeDiagnosis(result.Diagnosis);
 
         //Show toggles
@@ -314,6 +336,10 @@ public class GameController : MonoBehaviour
         //Reset Timer
         roundElapsedTime = 0f;
         countdownText.text = roundDuration.ToString("F0", CultureInfo.InvariantCulture);
+
+        //Reset diagnosis
+        patientChart.SetDiagnosisTitleActive(false);
+        patientChart.SetDiagnosisBodyActive(false);
 
         //Reset Toggles
         nextRoundToggle.isOn = false;
@@ -421,6 +447,16 @@ public class GameController : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void LogInventoryContent()
+    {
+        var message = "Player has: ";
+        foreach (var kvp in collectedMedication) 
+        {
+            message += $"{kvp.Value} {kvp.Key.colr.ColorType}_{kvp.Key.shape.ShapeType},";
+        }
+        Debug.Log(message);
     }
 
     [System.Serializable]
