@@ -58,6 +58,7 @@ public class GameController : MonoBehaviour
     private RoundData activeRound;
     private float roundElapsedTime;
     private RoundState activeRoundEndState;
+    bool waitingForUserSelection;
 
     //Debug
     [Header("Debug")]
@@ -85,6 +86,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        waitingForUserSelection = false;
         collectedMedication = new Dictionary<PillSO, int>();
         scoringZone.OnAdded += OnItemScored;
         scoringZone.OnDropped += OnItemDropped;
@@ -143,6 +145,7 @@ public class GameController : MonoBehaviour
 
     public void Toggle_StartNextRound()
     {
+        waitingForUserSelection = false;
         if (!nextRoundToggle.isOn) 
         {
             return;
@@ -153,6 +156,7 @@ public class GameController : MonoBehaviour
 
     public void Toggle_RestartRound()
     {
+        waitingForUserSelection = false;
         if (!retryToggle.isOn) 
         {
             return;
@@ -178,7 +182,6 @@ public class GameController : MonoBehaviour
     private void StartRound()
     {
         Debug.Log("Starting round: " + currentRound);
-        tray.Toggle();
         activeRound = Rounds[currentRound];
         roundDuration = activeRound.RoundDuration;
         collectedMedication.Clear();
@@ -216,6 +219,9 @@ public class GameController : MonoBehaviour
 
     public IEnumerator RoundLogic() 
     {
+        tray.gameObject.SetActive(true);
+        yield return tray.Show();
+
         while (!IsRoundComplete()) 
         {
             if (IsObjectiveAchieved())
@@ -227,7 +233,6 @@ public class GameController : MonoBehaviour
         }
 
         //Disabling as collision triggers are causing issues.
-        //yield return tray.Hide();
         EndRound();
     }
 
@@ -253,12 +258,12 @@ public class GameController : MonoBehaviour
             chartTranslationComponent.Hide();
         }
 
-        //Show doctors diagnosis field
-        patientChart.SetDiagnosisTitleActive(true);
-
         //Show clipboard
         patientChart.gameObject.SetActive(true);
+        //Show doctors diagnosis field
+        patientChart.SetDiagnosisTitleActive(true);
         yield return chartTranslationComponent.Show();
+        waitingForUserSelection = true;
 
         //Start typing diagnosis
         var result = diagnoses.First(x => x.State == activeRoundEndState);
@@ -280,6 +285,9 @@ public class GameController : MonoBehaviour
 
         quitToggle.isOn = false;
         quitToggle.gameObject.SetActive(true);
+
+        yield return new WaitUntil(() => waitingForUserSelection == false);
+        yield return tray.Hide();
         yield break;
     }
 
