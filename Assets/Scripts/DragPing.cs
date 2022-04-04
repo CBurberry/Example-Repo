@@ -25,13 +25,13 @@ public class DragPing : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("mousedown");
+        //Debug.Log("mousedown");
         mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
         // get the world position offset
         pointA = gameObject.transform.position - GetMouseWorldPos();
-        Debug.Log("mousedowna");
+        //Debug.Log("mousedowna");
         IsDragged = line.enabled = true;
-        Debug.Log("mousedowrn");
+        //Debug.Log("mousedowrn");
     }
 
     private Vector3 GetMouseWorldPos()

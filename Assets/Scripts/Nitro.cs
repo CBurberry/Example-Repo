@@ -2,35 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dynamite : MonoBehaviour
+public class Nitro : MonoBehaviour
 {
     public GameObject exp;
 
     public float force;
     public float radius;
 
-    public float countdown;
-    float timer = 3;
 
     //https://www.codegrepper.com/code-examples/csharp/unity+add+explosion+force
 
 
-    private void Start()
+    void OnCollisionEnter(Collision col)
     {
-        timer = countdown;
-
-    }
-
-    private void Update()
-    {
-        timer = timer - Time.deltaTime;
-        //Debug.Log(timer);
-        if (timer <= 0)
+        Debug.Log("hit");
+        Debug.Log(col.gameObject.tag);
+        Debug.Log(col.gameObject);
+        if (col.gameObject.tag == "Items")
         {
-            Debug.Log("why");
+            Debug.Log("EXPLODE");
             Triggered();
         }
-
     }
 
 

@@ -104,7 +104,7 @@ public class Spawner : MonoBehaviour
             //spawnNumber++;
             //Debug.Log(spawnNumber);
             spawnNumber = (int)Mathf.Floor(Time.time / (0.1f / spawnRate)) + 1;
-            Debug.Log(spawnNumber);
+            //Debug.Log(spawnNumber);
 
         }
     }    
