@@ -988,6 +988,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7603a169e1d89e45bd69a048848d811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosives:
+  - {fileID: 8507300816110243095, guid: dbc0dcf397977834382f7cc88116dd73, type: 3}
   pillsTemplate: []
   colours:
   - {fileID: 11400000, guid: e908b8e196d99a4488a0c8166be364fb, type: 2}
@@ -1004,6 +1006,7 @@ MonoBehaviour:
   range: 0.9
   spawnRate: 0.6
   spawnChance: 0
+  expSpawnChance: 0.01
   maxDelay: 1.1
   spawnNumber: 1
 --- !u!1 &886603186
