@@ -241,6 +241,8 @@ public class GameController : MonoBehaviour
 
     public void EndRound() 
     {
+        retryToggle.gameObject.SetActive(false);
+        quitToggle.gameObject.SetActive(false);
         spawner.SetSpawningActive(false);
         activeRoundEndState = GetRoundEndResult();
         LogInventoryContent();
@@ -281,6 +283,7 @@ public class GameController : MonoBehaviour
         }
         else 
         {
+            retryToggle.gameObject.SetActive(false);
             nextRoundToggle.isOn = false;
             nextRoundToggle.gameObject.SetActive(true);
         }
@@ -354,7 +357,9 @@ public class GameController : MonoBehaviour
         nextRoundToggle.isOn = false;
         nextRoundToggle.gameObject.SetActive(false);
         retryToggle.isOn = false;
-        retryToggle.gameObject.SetActive(false);
+        retryToggle.gameObject.SetActive(true);
+        quitToggle.isOn = false;
+        quitToggle.gameObject.SetActive(true);
 
         // Hide Patient Chart / Objectives
         var chartTranslationComponent = patientChart.GetComponent<ToggleTranslation>();
